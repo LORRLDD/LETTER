@@ -2,155 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Letter</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Georgia', serif;
-      text-align: center;
-      padding: 50px;
       margin: 0;
-      position: relative;
-      overflow: hidden;
-      background-image: url('https://images.unsplash.com/photo-1651375644279-fc5a3c52259d?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://cdn.pixabay.com/photo/2020/04/28/13/17/tulips-5104494_1280.jpg');
       background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.3);
-      z-index: 0;
-      pointer-events: none;
+    .container {
+      background-color: rgba(255, 255, 255, 0.7); /* More transparent */
+      max-width: 700px;
+      width: 90%;
+      padding: 50px 30px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
-    #question {
-      position: relative;
-      z-index: 2;
+    h1 {
+      font-size: 2.5rem;
+      color: #0099cc;
+      margin-bottom: 20px;
     }
 
-    button {
-      background-color: #ffb6c1;
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .play-button {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #0099cc;
       color: white;
-      padding: 15px 30px;
-      font-size: 18px;
       border: none;
-      border-radius: 10px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 20px;
-      z-index: 1;
-      position: relative;
-    }
-
-    button:hover {
-      background-color: #ff69b4;
-    }
-
-    #letter {
-      display: none;
-      opacity: 0;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 600px;
-      margin: 30px auto;
-      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
-      animation: fadeIn 1.5s forwards;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    #uploadSection a {
+      box-shadow: 0 4px 12px rgba(0, 153, 204, 0.3);
       text-decoration: none;
+    }
+
+    .play-button:hover {
+      background-color: #0077aa;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="question">
-    <button onclick="showLetter()">Click Me</button>
-  </div>
-
-  <div id="letter">
-    <h1>Hi My Love</h1>
+  <div class="container">
+    <h1>Happy Birthday, Love!</h1>
     <p>
-      To the most loving and maldita person that I truly love and appreciate,<br>
-      You've had my heart for a while now and I hope you know how much you really mean to me,<br>
-      Are you willing to conquer the world with me and be my girlfriend,<br><br>
-      Merv Gwyneth Elleso?
+      Happy 21st Birthday to the most incredible, beautiful, strong, and loving person I’ve ever known.
+      Thank you for always being there. Through the hardest moments, when everything felt heavy, you never left my side. 
+      You stayed. You showed me what real love looks like. And I want you to know that I’ll always do the same for you.
+      I’ll stay. I’ll fight. I’ll be right here, through anything and everything life throws our way.
     </p>
+    <p>
+      Here’s to more life, more love, and more beautiful memories together.
+    </p>
+    <p><strong>You and me, always.</strong></p>
 
-    <div id="responseButtons">
-      <button onclick="handleYes()">Yes</button>
-      <button onclick="handleNo()">No</button>
-    </div>
-
-    <div id="uploadSection" style="display:none;">
-      <p>Please upload a picture of you holding the gift I gave you. 💖</p>
-      <a href="https://forms.gle/1VEpNySpr92qu4uP8" target="_blank">
-        <button>Upload via Google Form</button>
-      </a>
-      <br>
-      <button onclick="confirmUpload()">I’m Done Uploading</button>
-    </div>
-
-    <div id="finalButton" style="display:none;">
-      <button onclick="openLoveSite()">Listen to This 💘</button>
-    </div>
+    <a class="play-button" href="https://www.youtube.com/watch?v=JeZ9wLt3UWs" target="_blank">Play Music</a>
   </div>
-
-  <script>
-    function showLetter() {
-      const letter = document.getElementById("letter");
-      letter.style.display = "block";
-      setTimeout(() => {
-        letter.style.opacity = "1";
-      }, 50);
-    }
-
-    function handleYes() {
-      document.getElementById("responseButtons").style.display = "none";
-      document.getElementById("uploadSection").style.display = "block";
-    }
-
-    function confirmUpload() {
-      document.getElementById("uploadSection").style.display = "none";
-      document.getElementById("finalButton").style.display = "block";
-    }
-
-    let noClickCount = 0;
-    function handleNo() {
-      noClickCount++;
-      if (noClickCount === 1) {
-        alert("Are you sure?");
-      } else if (noClickCount === 2) {
-        alert("Talaga ba?");
-      } else {
-        const responseDiv = document.getElementById("responseButtons");
-        responseDiv.innerHTML = "";
-        for (let i = 0; i < 20; i++) {
-          const yesBtn = document.createElement("button");
-          yesBtn.innerText = "Yes";
-          yesBtn.onclick = handleYes;
-          responseDiv.appendChild(yesBtn);
-        }
-      }
-    }
-
-    function openLoveSite() {
-      window.open("https://www.youtube.com/watch?v=m-fNVB-fAjk", "_blank");
-    }
-  </script>
 </body>
 </html>
